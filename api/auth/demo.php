@@ -40,7 +40,9 @@ try {
             $insertDay->execute([$completedId,$index+1,$scheduled->format('Y-m-d'),$condition]);
             $dayId = (int)$pdo->lastInsertId();
             $rating = $condition === 'test' ? $ratingTest[$testIndex++] : $ratingNormal[$normalIndex++];
-            $followed = !($index === 4);
+            // PDO's execute(array) may serialize booleans as empty strings; this
+            // column is an integer in MySQL/TiDB, so bind an explicit 1 or 0.
+            $followed = (int)!($index === 4);
             $tags = $index === 2 ? ['travel'] : [];
             $insertCheckin->execute([$dayId,$rating,$followed,json_encode($tags),$index === 4 ? 'A late night made this one harder to follow.' : null]);
         }

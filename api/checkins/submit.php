@@ -10,6 +10,7 @@ $rating = filter_var($input['rating'] ?? null, FILTER_VALIDATE_INT);
 if (!in_array($rating, [1,2,3,4,5], true)) fail('VALIDATION_ERROR','Please check the submitted values.',422,['rating'=>'Choose a rating from 1 to 5.']);
 $followed = $input['followed_plan'] ?? null;
 if (!in_array($followed, [true,false,0,1,'0','1'], true)) fail('VALIDATION_ERROR','Please check the submitted values.',422,['followed_plan'=>'Choose yes or no.']);
+$followed = (int)$followed;
 $followed = $followed === true || $followed === 1 || $followed === '1' ? 1 : 0;
 $tags = $input['context_tags'] ?? [];
 $allowed = ['sick','travel','exam','bad_sleep','unusual_day'];
