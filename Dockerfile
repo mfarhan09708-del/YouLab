@@ -8,6 +8,7 @@ COPY *.html ./public/
 COPY assets/ ./public/assets/
 COPY api/ ./public/api/
 RUN rm -f ./public/api/config/database.local.example.php
+RUN rm -f ./public/index.php
 
 ENV YOULAB_ENV=production
 ENV YOULAB_SESSION_DRIVER=mysql

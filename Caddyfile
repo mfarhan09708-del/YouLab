@@ -3,7 +3,18 @@
     encode zstd gzip
 
     @private path /api/config /api/config/* /database/* /docs/* /tests/* /sources/* /.git/*
-    respond @private 404
+    @php path *.php
 
-    php_server
+    route {
+        respond @private 404
+
+        handle @php {
+            php_server
+        }
+
+        handle {
+            try_files {path} {path}/index.html
+            file_server
+        }
+    }
 }
