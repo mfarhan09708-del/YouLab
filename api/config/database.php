@@ -28,6 +28,11 @@ function db(): PDO
         PDO::ATTR_EMULATE_PREPARES => false,
     ];
     $sslCa = getenv('YOULAB_DB_SSL_CA');
+    // TiDB Cloud Starter requires TLS. Its certificate is issued by a public CA,
+    // so the container's maintained system trust bundle is sufficient.
+    if ((!is_string($sslCa) || $sslCa === '') && getenv('TIDB_HOST') !== false) {
+        $sslCa = '/etc/ssl/cert.pem';
+    }
     if (is_string($sslCa) && $sslCa !== '' && defined('PDO::MYSQL_ATTR_SSL_CA')) {
         if (str_contains($sslCa, '-----BEGIN CERTIFICATE-----')) {
             $caFile = sys_get_temp_dir() . '/youlab-mysql-ca-' . hash('sha256', $sslCa) . '.pem';

@@ -1,6 +1,8 @@
 FROM dunglas/frankenphp:1-php8.4-alpine
 
-RUN install-php-extensions pdo_mysql mbstring
+RUN apk add --no-cache ca-certificates \
+    && update-ca-certificates \
+    && install-php-extensions pdo_mysql mbstring
 WORKDIR /app
 
 COPY Caddyfile /etc/caddy/Caddyfile
