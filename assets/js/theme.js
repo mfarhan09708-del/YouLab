@@ -1,0 +1,1 @@
+(()=>{const apply=()=>{const saved=localStorage.getItem('youlab_theme')||'system';document.body.dataset.theme=saved==='dark'||(saved==='system'&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light'};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});else apply()})();

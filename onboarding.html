@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f8f7">
+  <title>A little about you — YouLab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/auth.css">
+  <link rel="stylesheet" href="assets/css/onboarding.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="auth-body">
+  <a class="skip-link" href="#onboarding-main">Skip to setup</a>
+  <main class="onboarding-shell" id="onboarding-main">
+    <header class="onboarding-header">
+      <a class="brand" href="index.html" aria-label="YouLab home"><span class="brand-mark"><i data-lucide="flask-conical"></i></span><span>You<span class="brand-accent">Lab</span></span></a>
+      <button class="btn btn-quiet onboarding-logout" type="button" data-logout>Log out</button>
+    </header>
+    <section class="onboarding-card" aria-labelledby="onboarding-title">
+      <div class="onboarding-progress" aria-label="Setup progress"><span class="is-current" data-progress="1"></span><span data-progress="2"></span><span data-progress="3"></span></div>
+      <p class="eyebrow"><span></span> A QUICK START</p>
+      <p class="step-count" data-step-count>STEP 1 OF 2</p>
+      <h1 id="onboarding-title" data-title>What would you like to work on?</h1>
+      <p class="onboarding-intro" data-intro>Choose a goal that feels useful to you right now. You can change it later.</p>
+      <div class="onboarding-message" data-onboarding-message role="status" aria-live="polite" hidden></div>
+      <form data-onboarding-form>
+        <fieldset class="choice-grid goal-grid" data-choice-group="goal_preference">
+          <legend class="visually-hidden">Choose your goal</legend>
+          <label class="choice-card"><input type="radio" name="goal_preference" value="energy"><span class="choice-icon"><i data-lucide="sun"></i></span><span><b>More energy</b><small>Feel steadier through the day</small></span><i class="choice-check" data-lucide="circle-check"></i></label>
+          <label class="choice-card"><input type="radio" name="goal_preference" value="better_sleep"><span class="choice-icon"><i data-lucide="moon"></i></span><span><b>Better sleep</b><small>Build a more restful routine</small></span><i class="choice-check" data-lucide="circle-check"></i></label>
+          <label class="choice-card"><input type="radio" name="goal_preference" value="strength"><span class="choice-icon"><i data-lucide="dumbbell"></i></span><span><b>Strength</b><small>Support your training habits</small></span><i class="choice-check" data-lucide="circle-check"></i></label>
+          <label class="choice-card"><input type="radio" name="goal_preference" value="focus"><span class="choice-icon"><i data-lucide="brain"></i></span><span><b>Focus</b><small>Make space for clearer days</small></span><i class="choice-check" data-lucide="circle-check"></i></label>
+          <label class="choice-card"><input type="radio" name="goal_preference" value="stress_management"><span class="choice-icon"><i data-lucide="wind"></i></span><span><b>Less stress</b><small>Find small moments of calm</small></span><i class="choice-check" data-lucide="circle-check"></i></label>
+        </fieldset>
+        <fieldset class="choice-grid experience-grid" data-choice-group="experience_level" hidden>
+          <legend class="visually-hidden">Choose your experience level</legend>
+          <label class="choice-card"><input type="radio" name="experience_level" value="beginner"><span class="choice-icon"><i data-lucide="sprout"></i></span><span><b>Just getting started</b><small>Keep the first steps simple</small></span><i class="choice-check" data-lucide="circle-check"></i></label>
+          <label class="choice-card"><input type="radio" name="experience_level" value="intermediate"><span class="choice-icon"><i data-lucide="activity"></i></span><span><b>Finding my rhythm</b><small>I have a few habits in place</small></span><i class="choice-check" data-lucide="circle-check"></i></label>
+          <label class="choice-card"><input type="radio" name="experience_level" value="advanced"><span class="choice-icon"><i data-lucide="trending-up"></i></span><span><b>Ready to go deeper</b><small>I’m comfortable tracking routines</small></span><i class="choice-check" data-lucide="circle-check"></i></label>
+        </fieldset>
+        <div class="onboarding-finish" hidden>
+          <span class="finish-mark"><i data-lucide="sparkles"></i></span>
+          <p>Your preferences are saved. YouLab is ready to help you get started, one small experiment at a time.</p>
+          <a class="btn btn-primary onboarding-continue" href="dashboard.html">Continue to your workspace <i data-lucide="arrow-right"></i></a>
+        </div>
+        <div class="onboarding-actions" data-actions>
+          <button class="btn btn-primary btn-lg" type="submit"><span data-next-label>Continue</span><i data-lucide="arrow-right"></i></button>
+        </div>
+      </form>
+      <p class="onboarding-note"><i data-lucide="heart"></i> No pressure to get it perfect. This is about learning what works for you.</p>
+    </section>
+  </main>
+  <script src="assets/js/onboarding.js"></script>
+</body>
+</html>

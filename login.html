@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f8f7">
+  <title>Log in — YouLab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/auth.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="auth-body">
+  <a class="skip-link" href="#auth-form">Skip to sign in</a>
+  <main class="auth-shell">
+    <section class="auth-story" aria-label="About YouLab">
+      <a class="brand" href="index.html" aria-label="YouLab home"><span class="brand-mark"><i data-lucide="flask-conical"></i></span><span>You<span class="brand-accent">Lab</span></span></a>
+      <div class="auth-story-copy">
+        <span class="eyebrow"><span></span> YOUR BODY. YOUR DISCOVERY.</span>
+        <h1>Small experiments.<br><em>More useful answers.</em></h1>
+        <p>Pick one thing you’re curious about, try it at your own pace, and learn from your own days.</p>
+        <div class="auth-note"><span><i data-lucide="heart-handshake"></i></span><p><b>Gentle by design</b><br>Missed a day? Just continue when you’re ready.</p></div>
+      </div>
+      <p class="auth-disclaimer">Personal experiments, not medical advice.</p>
+    </section>
+    <section class="auth-panel">
+      <a class="auth-back" href="index.html"><i data-lucide="arrow-left"></i> Back to YouLab</a>
+      <div class="auth-card">
+        <span class="auth-icon"><i data-lucide="user-round"></i></span>
+        <span class="eyebrow"><span></span> YOUR YOULAB ACCOUNT</span>
+        <h2>Welcome back.</h2>
+        <p class="auth-intro">Sign in to pick up where you left off.</p>
+        <div class="auth-alert" data-auth-message role="status" aria-live="polite" hidden></div>
+        <form id="auth-form" data-auth-form="login" novalidate>
+          <label class="field-label" for="email">Email address</label>
+          <input class="auth-input" id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required maxlength="254">
+          <label class="field-label" for="password">Password</label>
+          <div class="password-wrap"><input class="auth-input" id="password" name="password" type="password" autocomplete="current-password" placeholder="Your password" required><button class="password-toggle" type="button" data-password-toggle aria-label="Show password" aria-pressed="false"><i data-lucide="eye"></i></button></div>
+          <button class="btn btn-primary auth-submit" type="submit"><span data-submit-label>Log in</span><i data-lucide="arrow-right"></i></button>
+        </form>
+        <div class="demo-access" id="demo-access"><span>or</span><button class="btn btn-outline-soft" type="button" data-demo-login><i data-lucide="play"></i> Explore the demo workspace</button><small>No account needed. Demo changes stay in the demo workspace.</small></div>
+        <p class="auth-switch">New to YouLab? <a href="signup.html">Create an account</a></p>
+        <p class="auth-footnote"><i data-lucide="lock-keyhole"></i> Your personal data stays yours.</p>
+      </div>
+    </section>
+  </main>
+  <script src="assets/js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<?php
+declare(strict_types=1);
+require_once __DIR__ . '/../config/bootstrap.php';
+require_method('POST');
+$userId = require_auth();
+require_csrf();
+$input = request_data();
+$dayId = positive_id($input['experiment_day_id'] ?? null, 'experiment_day_id');
+$rating = filter_var($input['rating'] ?? null, FILTER_VALIDATE_INT);
+if (!in_array($rating, [1,2,3,4,5], true)) fail('VALIDATION_ERROR','Please check the submitted values.',422,['rating'=>'Choose a rating from 1 to 5.']);
+$followed = $input['followed_plan'] ?? null;
+if (!in_array($followed, [true,false,0,1,'0','1'], true)) fail('VALIDATION_ERROR','Please check the submitted values.',422,['followed_plan'=>'Choose yes or no.']);
+$followed = $followed === true || $followed === 1 || $followed === '1' ? 1 : 0;
+$tags = $input['context_tags'] ?? [];
+$allowed = ['sick','travel','exam','bad_sleep','unusual_day'];
+if (!is_array($tags) || array_filter($tags,static fn($tag)=>!is_string($tag)) || array_diff($tags, $allowed)) fail('VALIDATION_ERROR','Please check the submitted values.',422,['context_tags'=>'Choose from the available tags.']);
+$tags = array_values(array_unique($tags));
+$noteInput = $input['note'] ?? '';
+if (!is_string($noteInput)) fail('VALIDATION_ERROR','Please check the submitted values.',422,['note'=>'Enter plain text.']);
+$note = trim($noteInput);
+if (mb_strlen($note) > 500) fail('VALIDATION_ERROR','Please check the submitted values.',422,['note'=>'Use at most 500 characters.']);
+$pdo = db();
+refresh_due_experiments($pdo, $userId);
+$stmt = $pdo->prepare('SELECT d.id,d.experiment_id,d.scheduled_date,e.status FROM experiment_days d JOIN experiments e ON e.id=d.experiment_id WHERE d.id=? AND e.user_id=?');
+$stmt->execute([$dayId,$userId]);
+$day = $stmt->fetch();
+if (!$day) fail('NOT_FOUND','Scheduled day not found.',404);
+if (!in_array($day['status'],['active','completed'],true) || $day['scheduled_date'] > date('Y-m-d')) fail('INVALID_STATE','This day is not available for check-in yet.',409);
+$save = $pdo->prepare('INSERT INTO checkins (experiment_day_id,rating,followed_plan,context_tags,note) VALUES (?,?,?,?,?) ON DUPLICATE KEY UPDATE rating=VALUES(rating),followed_plan=VALUES(followed_plan),context_tags=VALUES(context_tags),note=VALUES(note),updated_at=CURRENT_TIMESTAMP');
+$save->execute([$dayId,$rating,$followed,json_encode($tags),$note===''?null:$note]);
+$count = $pdo->prepare('SELECT COUNT(*) FROM checkins c JOIN experiment_days d ON d.id=c.experiment_day_id WHERE d.experiment_id=?');
+$count->execute([(int)$day['experiment_id']]);
+$completed = (int)$count->fetchColumn();
+$total = $pdo->prepare('SELECT duration_days FROM experiments WHERE id=?');
+$total->execute([(int)$day['experiment_id']]);
+$duration = (int)$total->fetchColumn();
+if ($completed >= $duration) {
+    $finish = $pdo->prepare("UPDATE experiments SET status='completed',completed_at=COALESCE(completed_at,NOW()) WHERE id=? AND status='active'");
+    $finish->execute([(int)$day['experiment_id']]);
+}
+success(['experiment_day_id'=>$dayId,'rating'=>$rating,'followed_plan'=>(bool)$followed,'context_tags'=>$tags,'completed_days'=>$completed,'total_days'=>$duration,'progress_percent'=>(int)round(100*$completed/$duration)],'Check-in saved.');

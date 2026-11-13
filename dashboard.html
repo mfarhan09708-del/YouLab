@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f8f7">
+  <title>Your workspace — YouLab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/theme.js"></script>
+  <link rel="stylesheet" href="assets/css/dashboard-app.css">
+  <link rel="stylesheet" href="assets/css/workspace-pages.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="workspace-body">
+  <a class="skip-link" href="#workspace-main">Skip to your workspace</a>
+  <header class="workspace-header">
+    <div class="workspace-nav">
+      <a class="brand" href="index.html" aria-label="YouLab home"><span class="brand-mark"><i data-lucide="flask-conical"></i></span><span>You<span class="brand-accent">Lab</span></span></a>
+      <nav aria-label="Workspace navigation"><a class="is-active" href="dashboard.html"><i data-lucide="layout-dashboard"></i> Today</a><a href="playbook.html">Playbook</a><a href="settings.html">Settings</a></nav>
+      <div class="workspace-user"><span data-user-initials>Y</span><button type="button" data-logout>Log out</button></div>
+    </div>
+  </header>
+  <main class="workspace-main" id="workspace-main">
+    <div class="workspace-heading"><div><p class="eyebrow"><span></span> YOUR PERSONAL LAB</p><h1>Good day, <span data-user-name>there</span>.</h1><p class="workspace-subtitle">A little curiosity is enough to get started.</p></div><time data-today></time></div>
+    <div class="workspace-alert" data-workspace-message role="status" aria-live="polite" hidden></div>
+    <section class="page-card demo-tools" data-demo-tools hidden><h2>Explore the demo</h2><p>This sample workspace includes example activity. Add a sample day to an experiment to see how progress and results change.</p><button class="btn btn-primary" type="button" data-fast-forward>Complete next sample day</button></section>
+    <section class="workspace-section" aria-labelledby="experiments-title">
+      <div class="workspace-section-heading"><div><p class="section-kicker">YOUR ROUTINE, YOUR PACE</p><h2 id="experiments-title">Your experiments</h2></div><span class="count-pill" data-experiment-count>0</span></div>
+      <div class="experiment-list" data-experiment-list aria-live="polite"><div class="loading-card"><span class="loading-dot"></span>Loading your experiments…</div></div>
+    </section>
+    <section class="starter-section" aria-labelledby="starter-title">
+      <div class="starter-copy"><span class="starter-icon"><i data-lucide="sparkles"></i></span><div><p class="section-kicker">A GOOD QUESTION TO START WITH</p><h2 id="starter-title">Small changes can teach you a lot.</h2><p>Choose something you already wonder about. You can start with a simple idea and shape it around your routine.</p><a class="btn btn-primary" href="experiment.html">Create an experiment <i data-lucide="arrow-right"></i></a></div></div>
+      <div class="template-list" data-template-list aria-label="Starter experiment ideas"><div class="loading-card"><span class="loading-dot"></span>Finding ideas…</div></div>
+    </section>
+    <p class="workspace-disclaimer"><i data-lucide="heart"></i> Personal experiments, not medical advice.</p>
+  </main>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

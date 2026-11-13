@@ -1,0 +1,13 @@
+.git
+.vercel
+.env
+.env.*
+!.env.example
+api/config/database.local.php
+sources/
+collection_status/
+database/
+docs/
+tests/
+README.md
+AGENTS.md

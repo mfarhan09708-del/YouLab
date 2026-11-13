@@ -1,0 +1,9 @@
+:{$PORT:80} {
+    root * /app/public
+    encode zstd gzip
+
+    @private path /api/config /api/config/* /database/* /docs/* /tests/* /sources/* /.git/*
+    respond @private 404
+
+    php_server
+}

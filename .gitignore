@@ -1,0 +1,22 @@
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+api/config/database.local.php
+*.pem
+*.key
+/sources/
+/collection_status/
+AGENTS.md
+
+# Editor and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local runtime artifacts
+*.log
+*.tmp
+coverage/
+/release/

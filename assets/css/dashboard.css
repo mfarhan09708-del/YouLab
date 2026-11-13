@@ -1,0 +1,6 @@
+/* Shared dashboard preview styles and app-wide reusable card treatments. */
+.surface-card{border:1px solid var(--line);border-radius:var(--radius);background:var(--white);box-shadow:var(--shadow)}
+.status-chip{display:inline-flex;align-items:center;gap:7px;padding:7px 10px;border-radius:999px;background:#e9f5f1;color:#397c70;font-size:11px;font-weight:700}
+.status-chip::before{width:6px;height:6px;border-radius:50%;background:#50a392;content:""}
+.metric-label{color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.dashboard-preview-frame{border:1px solid #e3ece8;border-radius:20px;background:#fff;box-shadow:var(--shadow)}

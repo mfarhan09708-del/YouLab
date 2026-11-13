@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f8f7">
+  <title>Set up an experiment — YouLab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/theme.js"></script>
+  <link rel="stylesheet" href="assets/css/experiment-setup.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="setup-body">
+  <a class="skip-link" href="#setup-main">Skip to experiment setup</a>
+  <header class="setup-header"><a class="brand" href="dashboard.html" aria-label="Back to your workspace"><span class="brand-mark"><i data-lucide="flask-conical"></i></span><span>You<span class="brand-accent">Lab</span></span></a><a class="setup-exit" href="dashboard.html"><i data-lucide="arrow-left"></i> Back to your workspace</a></header>
+  <main class="setup-main" id="setup-main">
+    <section class="setup-card" aria-labelledby="setup-title">
+      <div class="setup-progress" aria-label="Experiment setup progress"><span class="is-active" data-progress="1"></span><span data-progress="2"></span></div>
+      <div class="setup-step" data-setup-step="1">
+        <p class="eyebrow"><span></span> YOUR NEXT SMALL DISCOVERY</p>
+        <p class="setup-step-count">STEP 1 OF 2</p>
+        <h1 id="setup-title">What are you curious about?</h1>
+        <p class="setup-intro">Choose a starter idea or describe a small change you want to explore.</p>
+        <div class="setup-message" data-setup-message role="status" aria-live="polite" hidden></div>
+        <div class="template-grid" data-template-grid><div class="setup-loading"><span></span>Loading starter ideas…</div></div>
+        <button class="custom-choice" type="button" data-custom-choice><span><i data-lucide="plus"></i></span><span><b>Create a custom experiment</b><small>Use your own question and daily plan</small></span><i class="custom-arrow" data-lucide="arrow-right"></i></button>
+        <div class="custom-fields" data-custom-fields hidden>
+          <div class="field-row"><label for="custom-title">Experiment name</label><input id="custom-title" name="title" maxlength="150" placeholder="For example, a short walk after lunch"></div>
+          <div class="field-row"><label for="custom-description">What do you want to find out?</label><textarea id="custom-description" name="description" rows="2" maxlength="4000" placeholder="What change are you curious about?"></textarea></div>
+          <div class="field-row"><label for="custom-test">On test days, I will…</label><textarea id="custom-test" name="test_condition" rows="2" maxlength="4000" placeholder="Describe the small change you will try"></textarea></div>
+          <div class="field-row"><label for="custom-normal">On normal days, I will…</label><textarea id="custom-normal" name="normal_condition" rows="2" maxlength="4000" placeholder="Describe your usual routine"></textarea></div>
+          <div class="field-row"><label for="custom-outcome">What will you rate each day?</label><input id="custom-outcome" name="outcome_name" maxlength="100" placeholder="For example, afternoon energy"></div>
+        </div>
+        <div class="setup-actions"><a class="text-link" href="dashboard.html"><i data-lucide="arrow-left"></i> Cancel</a><button class="btn btn-primary btn-lg" type="button" data-continue>Choose duration <i data-lucide="arrow-right"></i></button></div>
+      </div>
+      <div class="setup-step" data-setup-step="2" hidden>
+        <p class="eyebrow"><span></span> YOUR NEXT SMALL DISCOVERY</p>
+        <p class="setup-step-count">STEP 2 OF 2</p>
+        <h1>Choose a pace that fits.</h1>
+        <p class="setup-intro">YouLab will balance the test and usual days, then shuffle them so the order is not predictable.</p>
+        <div class="duration-group" role="radiogroup" aria-label="Experiment duration">
+          <label class="duration-option"><input type="radio" name="duration_days" value="7"><span><b>7 days</b><small>A quick first look</small></span></label>
+          <label class="duration-option is-selected"><input type="radio" name="duration_days" value="14" checked><span><b>14 days</b><small>Two weeks to notice patterns</small></span></label>
+          <label class="duration-option"><input type="radio" name="duration_days" value="21"><span><b>21 days</b><small>A little more time</small></span></label>
+        </div>
+        <div class="field-row start-date-row"><label for="start-date">Start date</label><input id="start-date" name="start_date" type="date" required></div>
+        <section class="schedule-preview" aria-labelledby="schedule-title"><div class="schedule-head"><div><p class="section-kicker">YOUR PLAN AT A GLANCE</p><h2 id="schedule-title">A balanced, shuffled schedule</h2></div><span class="schedule-count" data-schedule-count></span></div><p class="schedule-legend"><span><i class="legend-dot test"></i> Test day</span><span><i class="legend-dot normal"></i> Usual day</span></p><div class="schedule-grid" data-schedule-grid aria-live="polite"></div></section>
+        <div class="review-box" data-review-box></div>
+        <div class="setup-message" data-setup-message-two role="status" aria-live="polite" hidden></div>
+        <div class="setup-actions"><button class="btn btn-outline-soft" type="button" data-back><i data-lucide="arrow-left"></i> Back</button><button class="btn btn-primary btn-lg" type="button" data-start>Start experiment <i data-lucide="arrow-right"></i></button></div>
+      </div>
+      <div class="setup-success" data-setup-success hidden></div>
+      <p class="setup-disclaimer"><i data-lucide="heart"></i> Personal experiments, not medical advice.</p>
+    </section>
+  </main>
+  <script src="assets/js/experiment-setup.js"></script>
+</body>
+</html>

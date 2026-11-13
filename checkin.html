@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f8f7">
+  <title>Daily check-in — YouLab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/theme.js"></script>
+  <link rel="stylesheet" href="assets/css/dashboard-app.css">
+  <link rel="stylesheet" href="assets/css/workspace-pages.css">
+  <link rel="stylesheet" href="assets/css/experiment-views.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="workspace-body">
+  <a class="skip-link" href="#checkin-main">Skip to daily check-in</a>
+  <header class="workspace-header"><div class="workspace-nav"><a class="brand" href="dashboard.html" aria-label="YouLab workspace"><span class="brand-mark"><i data-lucide="flask-conical"></i></span><span>You<span class="brand-accent">Lab</span></span></a><nav aria-label="Workspace navigation"><a class="is-active" href="dashboard.html"><i data-lucide="layout-dashboard"></i> Today</a><a href="dashboard.html#experiments-title"><i data-lucide="flask-conical"></i> Experiments</a></nav><div class="workspace-user"><span data-user-initials>Y</span><button type="button" data-logout>Log out</button></div></div></header>
+  <main class="workspace-main checkin-main" id="checkin-main">
+    <a class="back-link" data-back-link href="dashboard.html"><i data-lucide="arrow-left"></i> Your workspace</a>
+    <div class="workspace-alert" data-checkin-message role="status" aria-live="polite" hidden></div>
+    <div data-checkin-content><div class="loading-card"><span class="loading-dot"></span>Preparing your check-in…</div></div>
+  </main>
+  <script src="assets/js/checkin.js"></script>
+</body>
+</html>

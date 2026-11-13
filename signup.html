@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f8f7">
+  <title>Create an account — YouLab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/auth.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="auth-body">
+  <a class="skip-link" href="#auth-form">Skip to create account</a>
+  <main class="auth-shell">
+    <section class="auth-story" aria-label="About YouLab">
+      <a class="brand" href="index.html" aria-label="YouLab home"><span class="brand-mark"><i data-lucide="flask-conical"></i></span><span>You<span class="brand-accent">Lab</span></span></a>
+      <div class="auth-story-copy">
+        <span class="eyebrow"><span></span> START WITH ONE QUESTION</span>
+        <h1>Make room for<br><em>your own patterns.</em></h1>
+        <p>You don’t need a perfect routine. You just need a small question and a few moments to check in.</p>
+        <div class="auth-note"><span><i data-lucide="sparkles"></i></span><p><b>A little curiosity goes a long way</b><br>YouLab helps you notice what fits your life.</p></div>
+      </div>
+      <p class="auth-disclaimer">Personal experiments, not medical advice.</p>
+    </section>
+    <section class="auth-panel">
+      <a class="auth-back" href="index.html"><i data-lucide="arrow-left"></i> Back to YouLab</a>
+      <div class="auth-card">
+        <span class="auth-icon"><i data-lucide="user-round-plus"></i></span>
+        <span class="eyebrow"><span></span> YOUR YOULAB ACCOUNT</span>
+        <h2>Start your own little lab.</h2>
+        <p class="auth-intro">Create an account to keep your experiments together.</p>
+        <div class="auth-alert" data-auth-message role="status" aria-live="polite" hidden></div>
+        <form id="auth-form" data-auth-form="signup" novalidate>
+          <label class="field-label" for="name">Your name</label>
+          <input class="auth-input" id="name" name="name" type="text" autocomplete="name" placeholder="How should we greet you?" required maxlength="100">
+          <label class="field-label" for="email">Email address</label>
+          <input class="auth-input" id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required maxlength="254">
+          <label class="field-label" for="password">Create a password</label>
+          <div class="password-wrap"><input class="auth-input" id="password" name="password" type="password" autocomplete="new-password" placeholder="At least 10 characters" required minlength="10" maxlength="72" aria-describedby="password-hint"><button class="password-toggle" type="button" data-password-toggle aria-label="Show password" aria-pressed="false"><i data-lucide="eye"></i></button></div>
+          <small class="field-hint" id="password-hint">Use 10–72 characters. A longer passphrase is easier to remember.</small>
+          <button class="btn btn-primary auth-submit" type="submit"><span data-submit-label>Create account</span><i data-lucide="arrow-right"></i></button>
+        </form>
+        <p class="auth-switch">Already have an account? <a href="login.html">Log in</a></p>
+        <p class="auth-footnote"><i data-lucide="lock-keyhole"></i> Your personal data stays yours.</p>
+      </div>
+    </section>
+  </main>
+  <script src="assets/js/auth.js"></script>
+</body>
+</html>
